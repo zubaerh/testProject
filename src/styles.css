@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background-color: hsl(291, 56%, 88%);
+    background-color: #161d31;
   }
   
   .material-icons.text-base {

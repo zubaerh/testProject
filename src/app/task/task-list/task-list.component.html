@@ -1,0 +1,35 @@
+<ng-container *ngIf="showReportTask === false">
+    <button class="btn btn-primary bg-green-600" (click)=
+    "showReportTask = true">Add new task</button>
+<clr-datagrid>
+    <clr-dg-column [clrDgField]="'taskNo'" 
+ [clrDgColType]="'number'">Task No</clr-dg-column>
+ <clr-dg-column [clrDgField]="'type'">Type</clr-dg-column>
+ <clr-dg-column [clrDgField]="'title'">Title</clr-dg-column>
+ <clr-dg-column [clrDgField]="'description'">Description
+ </clr-dg-column>
+ <clr-dg-column [clrDgField]="'priority'">Priority
+ </clr-dg-column>
+ <clr-dg-row *clrDgItems="let task of tasks">
+    <clr-dg-action-overflow>
+        <button class="action-item" (click)="selectedTask
+        = task">Delete</button>
+        </clr-dg-action-overflow>
+    <clr-dg-cell>{{task.taskNo}}</clr-dg-cell>
+    <clr-dg-cell>{{task.type}}</clr-dg-cell>
+    <clr-dg-cell>{{task.title}}</clr-dg-cell>
+    <clr-dg-cell>{{task.description}}</clr-dg-cell>
+    <clr-dg-cell>
+        <span class="label" [class.label-danger]=
+ "task.priority === 'high'">{{task.priority}}</span>
+    </clr-dg-cell>
+ </clr-dg-row>
+ <clr-dg-footer>{{tasks.length}} tasks</clr-dg-footer>
+</clr-datagrid>
+</ng-container>
+<app-task-report *ngIf="showReportTask == true" 
+ (formClose)="onCloseReport()"></app-task-report>
+ <app-confirm-dialog *ngIf="selectedTask" 
+ [taskNo]="selectedTask.taskNo" 
+ (confirm)="onConfirm($event)"></app-confirm-dialog>
+

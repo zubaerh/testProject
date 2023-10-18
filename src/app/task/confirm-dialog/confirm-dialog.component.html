@@ -1,0 +1,17 @@
+<clr-modal [clrModalOpen]="taskNo !== null" 
+ [clrModalClosable]="false">
+ <h3 class="modal-title">
+ Delete Task #
+ {{taskNo}}
+ </h3>
+ <div class="modal-body">
+ <p>Are you sure you want to close the task?</p>
+ </div>
+ <div class="modal-footer">
+ <button type="button" class="btn btn-outline  bg-green-600 mr-2" 
+ (click)="disagree()">Cancel</button>
+ <button type="button" class="btn btn-danger  bg-red-600 ml-2" 
+ (click)="agree()">Yes, continue</button>
+ </div>
+</clr-modal>
+
