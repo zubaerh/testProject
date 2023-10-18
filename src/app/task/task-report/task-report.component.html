@@ -1,4 +1,100 @@
-<h3>Create a task</h3>
+<div class="bg-gradient-to-r from-purple-200 via-pink-200 to-red-200 p-8 rounded-lg">
+    <h3 class="text-2xl font-bold mb-4 text-black">Create a task</h3>
+    <form *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="addTask()" class="space-y-4">
+        <div class="mb-4">
+            <label for="title" class="text-sm font-semibold mb-1 block text-black">Title</label>
+            <input id="title" type="text" formControlName="title"
+                class="border py-2 px-3 rounded focus:outline-none text-black focus:border-blue-500 w-full"
+                placeholder="Enter title">
+            <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+                class="text-red-500 text-xs mt-1">Title is required</div>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="text-sm font-semibold mb-1 block text-black">Description</label>
+            <textarea id="description" formControlName="description"
+                class="border py-2 px-3 rounded focus:outline-none text-black focus:border-blue-500 w-full"
+                placeholder="Enter description"></textarea>
+        </div>
+        <div class="mb-4">
+            <label class="text-sm font-semibold mb-1 block text-black">Priority</label>
+            <label class="inline-flex items-center">
+                <input type="radio" value="low" formControlName="priority"
+                    class="form-radio h-5 w-5 text-blue-600">
+                <span class="ml-2 text-green-900">Low</span>
+            </label>
+            <label class="inline-flex items-center ml-4">
+                <input type="radio" value="high" formControlName="priority"
+                    class="form-radio h-5 w-5 text-blue-600">
+                <span class="ml-2 text-red-900">High</span>
+            </label>
+            <div *ngIf="taskForm.get('priority')?.invalid && taskForm.get('priority')?.touched"
+                class="text-red-500 text-xs mt-1">Priority is required</div>
+        </div>
+        <div class="mb-4">
+            <label class="text-sm font-semibold mb-1 block text-black">Type</label>
+            <select formControlName="type"
+                class="border py-2 px-3 rounded focus:outline-none text-black focus:border-blue-500 w-full">
+                <option value="Web Design">Web Design</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Graphic Design">Graphic Design</option>
+                <option value="Software Development">Software Development</option>
+                <option value="Software Testing">Software Testing</option>
+                <option value="Documentation">Documentation</option>
+            </select>
+            <div *ngIf="taskForm.get('type')?.invalid && taskForm.get('type')?.touched"
+                class="text-red-500 text-xs mt-1">Type is required</div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <button type="submit"
+                class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:ring focus:ring-green-200">
+                Create
+            </button>
+            <button type="button" (click)="formClose.emit()"
+                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none focus:ring focus:ring-red-200">
+                Cancel
+            </button>
+        </div>
+    </form>
+    <div class="mt-8" *ngIf="suggestions.length">
+        <div class="flex justify-between">
+            <h4 class="text-xl font-semibold">Similar tasks</h4>
+        </div>
+        <div class="mt-4 space-y-2">
+            <div *ngFor="let task of suggestions" class="border p-4 rounded">
+                <div class="font-semibold">#{{task.taskNo}}: {{task.title}}</div>
+                <div>{{task.description}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h3>Create a task</h3>
 <form clrForm *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="addTask()">
  <clr-input-container>
  <label>Title</label>
@@ -58,4 +154,4 @@
     </clr-stack-view>
     </div>
 </div>
-
+ -->

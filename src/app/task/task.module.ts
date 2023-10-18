@@ -7,6 +7,7 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from 
  '@angular/platform-browser/animations';
  import { ReactiveFormsModule } from '@angular/forms';
+ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from
     CommonModule,
     ClarityModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     TaskListComponent
